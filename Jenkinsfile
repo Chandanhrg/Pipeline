@@ -21,6 +21,7 @@ pipeline {
     }  
     
     stage ('DEPLOY') {
+	agent { "Jekins" }
       steps {
         echo "This is Deploy stage" 
         sh 'sleep 5'
