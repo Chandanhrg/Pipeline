@@ -11,10 +11,20 @@ pipeline {
       }  
     }  
     
-    stage ('TEST') {
+    stage ('TEST PARALLEL') {
+	parallel {
+		stage ('TEST ON CHROME') { 
      	    steps {
-	 echo "This is Test stage" 
-        sh 'sleep 5; exit 0'
+		echo "This is Test on chrome" 
+       		sh 'sleep 5; exit 0'
+		}
+		}
+		stage ('TEST ON SAFARI') { 
+     	    steps {
+		echo "This is Test on safari" 
+       		sh 'sleep 5; exit 0'
+		}
+		}
       }  
     }  
     
@@ -25,5 +35,4 @@ pipeline {
       }  
     }  
   } 
-
 }
